@@ -2,7 +2,7 @@
 
 This Repostory should be an eviroment to test and expirment around with various things
 
-## Testing
+## Testing with JUnit
 
 ### Best Practice & Naming Conventions
 
@@ -27,3 +27,22 @@ Testing Methods are used to expect a certain value as a result a unit part on an
 | `assertAll()`    | Tests multiple methodes at one result.                                       |
 
 #### Assumptions
+
+Used to assume that a current state is happening.
+
+| Method                  | Usage                                                                         |
+| ----------------------- | ----------------------------------------------------------------------------- |
+| `assumeTrue()`          | Tests if a circumstance is true. If not the test is skipped, else it is true. |
+| `assumingThat(, () {})` | Runs test inside Lambda function whenever the assumtion is true.              |
+
+#### Useful Annotations
+
+Maybe useful later.
+
+| Annotation          | Usage                                                                                                                                                                                     |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `@Tag`              | Define a Tag for a Test.                                                                                                                                                                  |
+| `@Order(1)`         | Test Excution Order manipulation                                                                                                                                                          |
+| `@Nested`           | Nests in the Test Class written before.                                                                                                                                                   |
+| `@RepeatedTest(2)`  | Repeats the test a numeric amount of time.                                                                                                                                                |
+| `@ParamterizedTest` | Can run an array of test cases given as parameter, make sure to use this annotation without `@Test` and make sure to use the same or at least a lower than your engine version in pom.xml |
