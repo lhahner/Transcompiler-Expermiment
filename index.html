@@ -1,0 +1,241 @@
+<h1 id="testing-playground">Testing-Playground</h1>
+<p>This Repostory should be an eviroment to test and expirment around with various things</p>
+<h2 id="testing-with-junit">Testing with JUnit</h2>
+<h3 id="best-practice-naming-conventions">Best Practice &amp; Naming Conventions</h3>
+<p>Nameing a test a certian way can lead to a readable and understandable test code.</p>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 49%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Use Case of Conventions</th>
+<th style="text-align: left;">Convention</th>
+<th style="text-align: left;">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Methods</td>
+<td style="text-align: left;"><code>MethodName_StateUnderTest_ExpectedBehavior</code></td>
+<td style="text-align: left;"><code>isAdult_AgeLessThan18_False</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Class-name</td>
+<td style="text-align: left;"><code>Test*.java</code> <code>Test.java</code> <code>*Tests.java</code> <code>*TestCase.java</code></td>
+<td style="text-align: left;"><code>isAdult_AgeLessThan18_False_Test</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="testing-methods">Testing Methods</h3>
+<p>Testing Methods are used to expect a certain value as a result a unit part on an application.</p>
+<h4 id="assertions">Assertions</h4>
+<p>Assertions in JUnit provide a mechanism for developers to define specific conditions or expectations within test methods, serving as checkpoints to verify that certain aspects of the code under test behave as intended, thereby enhancing the reliability and correctness of software implementations.</p>
+<table>
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 88%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Functions</th>
+<th style="text-align: left;">Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>assertEquals()</code></td>
+<td style="text-align: left;">Used for testing an expected result, can be repeated with <code>@RepeatedTest(5)</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>assertTrue()</code></td>
+<td style="text-align: left;">Used to test if the result of a methode is true.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>assertFalse()</code></td>
+<td style="text-align: left;">Used to test if the result of a methode is false.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>assertAll()</code></td>
+<td style="text-align: left;">Tests multiple methodes at one result.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>assertThrows()</code></td>
+<td style="text-align: left;">Expects the unit/methode to through the given Exception. <br> If not test fails. Also possible to test custom Exceptions.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="assumptions">Assumptions</h4>
+<p>Assumptions in JUnit are conditional statements that allow tests to be skipped based on certain conditions not being met, providing a flexible way to manage test execution and handle scenarios where prerequisites or environmental factors are not satisfied.</p>
+<table>
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 77%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Functions</th>
+<th style="text-align: left;">Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>assumeTrue()</code></td>
+<td style="text-align: left;">Tests if a circumstance is true. If not the test is skipped, else it is true.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>assumingThat(, () {})</code></td>
+<td style="text-align: left;">Runs test inside Lambda function whenever the assumtion is true.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="useful-annotations">Useful Annotations</h4>
+<p>Annotations in JUnit are special markers prefixed with the ‘@’ symbol that provide metadata to the JUnit framework, specifying how methods should be treated during testing, including indicating test methods, setup and teardown methods, expected exceptions, and more.</p>
+<table>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 90%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Annotations</th>
+<th style="text-align: left;">Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>@Tag</code></td>
+<td style="text-align: left;">Define a Tag for a Test.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>@Order(1)</code></td>
+<td style="text-align: left;">Test Excution Order manipulation</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>@Nested</code></td>
+<td style="text-align: left;">Nests in the Test Class written before.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>@RepeatedTest(2)</code></td>
+<td style="text-align: left;">Repeats the test a numeric amount of time.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><br></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>@ParamterizedTest</code></td>
+<td style="text-align: left;">Can run an array of test cases given as parameter, make sure to use this annotation without <br> <code>@Test</code> and make sure to use the same or at least a lower than your engine version in pom.xml</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><br></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>@Timeout(5)</code></td>
+<td style="text-align: left;">Used to wait a given amount of time for a test to start</td>
+</tr>
+</tbody>
+</table>
+<h2 id="best-practices-and-guidelines">Best Practices and Guidelines</h2>
+<h3 id="statements-to-make-sure-regarding-the-test">Statements to make sure regarding the test</h3>
+<p>In various educational and technical materials, there exist divergent sets of guidelines pertaining to a multitude of subjects. Here, we offer a condensed synthesis of several such guidelines, drawing from diverse sources to provide a comprehensive overview of the topic at hand.</p>
+<table>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Mantra</th>
+<th style="text-align: left;">Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Does It Do What I Want?</td>
+<td style="text-align: left;">You want the code to prove to you that it’s doing exactly what you think it should.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Does It Do What I Want All of the Time?</td>
+<td style="text-align: left;">Make sure the code does what you want all fo the time, even when the winds are high, <br> the parameters are suspect, the disk is full, and the network is sluggish.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Can I Depend On It?</td>
+<td style="text-align: left;">Know for certain both its strengths and its limitations</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Does it Document my Intent?</td>
+<td style="text-align: left;">Tests can be a executable documentation of the code.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Right</td>
+<td style="text-align: left;">Are the results <strong>right</strong>? What would the user expect from the code and does it change through the lifetime.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Boundary</td>
+<td style="text-align: left;">Are all the <strong>boundary</strong> conditions correct? <strong>CORRECT</strong> Framework: <br></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><br></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><em><strong>C</strong>onformance</em> - Does the value conform to an expected format?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><em><strong>O</strong>dering</em> - Is the set of values ordered or unordered as appropiate?</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><em><strong>R</strong>ange</em> - Is the value within reasonable minimum and maximum values?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><em><strong>R</strong>eference</em> - Does the code reference anything external that isn’t under direct control of the code itself?</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><em><strong>E</strong>xistence</em> - Does the value exist (e.g., is non-null, non-zero, persent in a set, etc.)?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><em><strong>C</strong>ardinality</em> - Are there enough values?</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><em><strong>T</strong>ime</em> - Is everything happening in order? At the right time? In time? <br></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><br></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Inverse</td>
+<td style="text-align: left;">Can you check <strong>inverse</strong> relationsships?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cross-check</td>
+<td style="text-align: left;">Can you <strong>cross-check</strong> results using other means?</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Error conditions</td>
+<td style="text-align: left;">Can you force <strong>error</strong> conditions to happen?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Performance</td>
+<td style="text-align: left;">Are <strong>performance</strong> characteristics within bounds?</td>
+</tr>
+</tbody>
+</table>
+<h3 id="follow-up-on-how-to-thinks-about-testing">Follow-up on how to thinks about testing</h3>
+<ol type="1">
+<li>Before Developing the Unit, think of possible test cases that should work</li>
+<li>After pointed out possible “failures”, start developing the unit</li>
+<li>Write the tests accordingly to step 1.</li>
+<li>Run test’s and redesign if needed</li>
+</ol>
