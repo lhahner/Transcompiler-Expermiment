@@ -53,9 +53,9 @@ Annotations in JUnit are special markers prefixed with the '@' symbol that provi
 |                     | <br>                                                                                                                                                                                           |
 | `@Timeout(5)`       | Used to wait a given amount of time for a test to start                                                                                                                                        |
 
-## Best Practices and Guidelines
+## Guidelines
 
-### Statements to make sure regarding the test
+### Statements to make sure the test is efficient and effective
 
 In various educational and technical materials, there exist divergent sets of guidelines pertaining to a multitude of subjects. Here, we offer a condensed synthesis of several such guidelines, drawing from diverse sources to provide a comprehensive overview of the topic at hand.
 
@@ -87,3 +87,22 @@ In various educational and technical materials, there exist divergent sets of gu
 2. After pointed out possible "failures", start developing the unit
 3. Write the tests accordingly to step 1.
 4. Run test's and redesign if needed
+
+### Properties of a good test
+
+| Property     | Description                                                                                                             |
+| :----------- | :---------------------------------------------------------------------------------------------------------------------- |
+| Automatic    | Shouldn't be more complicated than pressing one button and the test should determine by itself if it failed or suceeded |
+| Thorough     | Either test for boundary or test every aspect of the code.                                                              |
+| Repeatable   | Every test should be independend from each other test and the enviroment                                                |
+| Independent  | The Test should not be influenced by any external circumstance, for example a database                                  |
+| Professional | Don't write useless test, like testing a Getter or Setter methode.                                                      |
+
+## Design & Testing
+
+- Better separation of concerns by designing for testability: Write Code that is easier to test, will improve the design. If the answer for "How am I going to test this?" is not obvious, something is wrong.
+- Clarifying design by defining class invariants: Which means that for some areas rules are set, for example a Structural invariants might be an array which as an element at index 0 and 2 but not at 1.
+- Improving interfaces with test-driven design: Write the tests before writing the actual code for example a methode. 
+- Establishing and localizing validation responsibilities: Always check who is suppossed to validate the input data. 
+
+
